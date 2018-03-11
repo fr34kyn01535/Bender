@@ -56,7 +56,7 @@ commands["warn"] = function(message,reason){
 		infoAction(message,"warning",target,reason).catch(console.error);
 		broadcastAction(message,"warning",target,reason).catch(console.error);
 		logAction(message,"Warning",target,16312092,reason).catch(console.error);
-		message.guild.emit("warn",target,reason);
+		message.guild.emit("warn",target.id,reason);
 	});
 }
 
@@ -68,7 +68,7 @@ commands["kick"] = function(message,reason){
 			broadcastAction(message,"kick",target,reason).catch(console.error);
 			member.kick(reason).then(function(){
 				logAction(message,"Kick",target,16098851,reason).catch(console.error);
-				message.guild.emit("kick",target,reason);
+				message.guild.emit("kick",target.id,reason);
 			})
 		}).catch(console.error);
 	});
@@ -82,7 +82,7 @@ commands["ban"] = function(message,reason){
 			broadcastAction(message,"ban",target,reason).catch(console.error);
 			member.ban(reason).then(function(){
 				logAction(message,"Ban",target,13632027,reason).catch(console.error);
-				message.guild.emit("ban",target,reason);
+				message.guild.emit("ban",target.id,reason);
 			});
 		}).catch(console.error);
 	});
