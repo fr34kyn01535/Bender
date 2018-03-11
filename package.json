@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/fr34kyn01535/Bender#readme",
   "dependencies": {
-    "discord-bot-events": "^1.0.0",
+    "discordjs-bot-events": "^1.0.0",
     "discord.js": "^11.3.2"
   }
 }

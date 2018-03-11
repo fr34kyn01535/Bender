@@ -1,6 +1,6 @@
 "use strict";
 let Discord = require("discord.js");
-let discordBotEvents = require("discord-bot-events");
+let discordBotEvents = require("discordjs-bot-events");
 let discord = new Discord.Client({autoreconnect: true});
 
 let commands = {};
