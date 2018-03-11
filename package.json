@@ -1,0 +1,23 @@
+{
+  "name": "bender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fr34kyn01535/Bender.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fr34kyn01535/Bender/issues"
+  },
+  "homepage": "https://github.com/fr34kyn01535/Bender#readme",
+  "dependencies": {
+    "discord-bot-events": "^1.0.0",
+    "discord.js": "^11.3.2"
+  }
+}
