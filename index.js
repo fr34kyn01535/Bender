@@ -35,7 +35,7 @@ function logAction(message,action,target,color,reason){
 			},
 			{
 				"name": "User",
-				"value": target.toString()
+				"value": target.tag +" ("+target.id+")"
 			},
 			{
 				"name": "Reason",
