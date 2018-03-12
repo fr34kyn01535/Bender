@@ -35,7 +35,7 @@ function logAction(message,action,target,color,reason){
 			},
 			{
 				"name": "User",
-				"value": target.toString()
+				"value": target.tag +" ("+target.id+")"
 			},
 			{
 				"name": "Reason",
@@ -92,15 +92,16 @@ discord.on("message", function(message) {
 	if (message.author.id === discord.user.id || !message.member) return false;
 	message.mentions.users.delete(message.author.id);
 	if(message.content && message.content.startsWith(".")){
-		var text = message.content;
-		var command = text.substr(1,text.indexOf(' ')-1);
-		var arg = text.substr(text.indexOf(' ')+1); 
-		message.mentions.users.every(function(user){
-			arg = arg.replace("<@"+user.id+"> ","").replace("<@"+user.id+">","").replace("<@!"+user.id+"> ","").replace("<@!"+user.id+">","");
-		});
-		if(commands.hasOwnProperty(command) && typeof commands[command] == "function"){
-			if(arg != "" && arg != null)
-				commands[command](message,arg);
+		var text = message.cleanContent;
+		const regex = /\.([\w]*)\ @[\w]* (.*)/g;
+		var match = regex.exec(text);
+		var command = match[1];
+		var args = match[2];
+		if(match.length == 3){
+			if(commands.hasOwnProperty(command) && typeof commands[command] == "function"){
+				if(args != "" && args != null)
+					commands[command](message,args);
+			}
 		}
 		message.delete();
 	}
