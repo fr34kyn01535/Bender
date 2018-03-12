@@ -95,12 +95,14 @@ discord.on("message", function(message) {
 		var text = message.cleanContent;
 		const regex = /\.([\w]*)\ @[\w]* (.*)/g;
 		var match = regex.exec(text);
-		var command = match[1];
-		var args = match[2];
-		if(match.length == 3){
-			if(commands.hasOwnProperty(command) && typeof commands[command] == "function"){
-				if(args != "" && args != null)
-					commands[command](message,args);
+		if(match != null){
+			var command = match[1];
+			var args = match[2];
+			if(match.length == 3){
+				if(commands.hasOwnProperty(command) && typeof commands[command] == "function"){
+					if(args != "" && args != null)
+						commands[command](message,args);
+				}
 			}
 		}
 		message.delete();
