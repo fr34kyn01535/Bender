@@ -1,9 +1,9 @@
 "use strict";
-let Discord = require("discord.js");
-let discordBotEvents = require("discord.js-bot-events");
-let discord = new Discord.Client({autoreconnect: true});
+const Discord = require("discord.js");
+const discordBotEvents = require("discord.js-bot-events");
 
-let commands = {};
+var discord = new Discord.Client({autoreconnect: true});
+var commands = {};
 
 discord.login(process.env.TOKEN);
 discord.on('ready', function(){
