@@ -92,18 +92,18 @@ discord.on("message", function(message) {
 	if (message.author.id === discord.user.id || !message.member) return false;
 	message.mentions.users.delete(message.author.id);
 	if(message.content && message.content.startsWith(".")){
-		var text = message.cleanContent;
-		const regex = /\.([\w]*)\ @[\w]* (.*)/g;
-		var match = regex.exec(text);
-		if(match != null){
-			var command = match[1];
-			var args = match[2];
-			if(match.length == 3){
-				if(commands.hasOwnProperty(command) && typeof commands[command] == "function"){
-					if(args != "" && args != null)
-						commands[command](message,args);
-				}
-			}
+		var text = message.content;
+		var command = text.substring(1,text.indexOf(" "));
+		var args = text.substring(text.indexOf(" ")+1)
+			console.log(command,args);
+		message.mentions.users.every(function(target){
+			console.log(target);
+			args = args.replace("<@"+target.id+">","").replace("<@!"+target.id+">","");
+		});
+		
+		if(args != "" && commands.hasOwnProperty(command) && typeof commands[command] == "function"){
+			if(args != "" && args != null)
+				commands[command](message,args);
 		}
 		message.delete();
 	}
